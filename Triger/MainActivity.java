@@ -39,7 +39,7 @@ public class MainActivity extends AppCompatActivity {
                         num1++;
                         try {
                             Class.forName("com.mysql.jdbc.Driver");
-                            connection = DriverManager.getConnection("jdbc:mysql://120.77.35.18:3306/ComSysDesign", "root", "jiaoma");
+                            connection = DriverManager.getConnection("jdbc:mysql://xxxxxxxxx", "xxxxxx", "xxxxxx");
                             Log.e("MainActivity", "true1");
                         } catch (ClassNotFoundException e) {
                             // TODO Auto-generated catch block
