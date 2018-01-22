@@ -83,8 +83,8 @@ DATABASES = {
     'NAME': 'ComSysDesign',   #数据库名
     'USER': 'root',    #用户名
     'PASSWORD': 'jiaoma',
-    'HOST': '120.77.35.18',
-    'PORT': '3306',
+    'HOST': 'xxxxxxxxxxxxx',
+    'PORT': 'xxxxxxxx',
     'CHARSET':'utf8',##设置字符集，不然会出现中文乱码
     },
 }
