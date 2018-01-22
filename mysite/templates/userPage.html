@@ -1,0 +1,1209 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <!-- The above 2 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <!-- Note there is no responsive meta tag here -->
+
+    <link rel="icon" href="../../favicon.ico">
+
+    <title>Non-responsive Template for Bootstrap</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="/static/css/bootstrap.css" rel="stylesheet">
+
+    <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+    <link href="/static/css/ie10-viewport-bug-workaround.css" rel="stylesheet">
+
+    <!-- Custom styles for this template -->
+    <link href="/static/css/non-responsive.css" rel="stylesheet">
+
+    <!-- Just for debugging purposes. Don't actually copy these 2 lines! -->
+    <!--[if lt IE 9]><script src="../../assets/js/ie8-responsive-file-warning.js"></script><![endif]-->
+    <script src="/static/js/ie-emulation-modes-warning.js"></script>
+
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+  </head>
+
+  <body>
+	<nav class="navbar navbar-default">
+		<div class="container-fluid">
+		<!-- Brand and toggle get grouped for better mobile display -->
+		<div class="navbar-header">
+		<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+		<span class="sr-only">Toggle navigation</span>
+		<span class="icon-bar"></span>
+		<span class="icon-bar"></span>
+		<span class="icon-bar"></span>
+		</button>
+		<a class="navbar-brand" href="#">大型软件设计</a>
+		</div>
+
+		<!-- Collect the nav links, forms, and other content for toggling -->
+		<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+		<ul class="nav navbar-nav">
+		<li><a href="/">首页</a></li>
+		<li><a href="#">帮助</a></li>
+		</ul>
+		<form action="{% url 'user' %}" class="navbar-form navbar-left" enctype="multipart/form-data" method="post">
+			{% csrf_token %}
+			<div class="form-group">
+			  <input type="file" class="form-control" name="myfile" placeholder="浏览上传文件">
+			  <input type="text" name="password" style="display:none" value={{ password }}>
+			  <input type="text" name="username" style="display:none" value={{ teamname }}>
+			</div>
+			<button type="submit" name="upload" class="btn btn-default">上传</button>
+		</form>
+		</div><!-- /.navbar-collapse -->
+		</div><!-- /.container-fluid -->
+    <div class="jumbotron" style="text-align: center;">
+			<h1>体操报名管理系统</h1>
+		  <p>Made by 马金鑫 吴圣辉 安方军 王帅 杨博中 林炳灿 董鹤友</p>
+		</div>
+		<!-- Container-->
+		<form action="{% url 'user' %}" method="post" accept-charset="utf-8" enctype="multipart/form-data">
+      {% csrf_token %}
+	    <div class="container">
+	      <div class="page-header">
+	        <h1>团队报名</h1>
+	        <p class="lead">请在此填写关于你的团队的全部人员的信息，包括一名队长、一名队医和1到8名队员。 </p>
+	      </div>
+
+	      <div class="container_s">
+	      	<h3>团队信息</h3>
+		      <br>
+	      	<div class="input-group input-group-sl">
+		        <span class="input-group-addon" id="sizing-addon1">队名</span>
+		        <input type="text" class="form-control" placeholder="Name" aria-describedby="sizing-addon1" name="team_name" readonly="readonly" value={{teamname}}>
+		      </div><br>
+		      队员人数（不含领队、队医）:&nbsp;&nbsp;
+	      	<div class="btn-group" role="group" aria-label="..." style="display: inline-block;">
+		  		  <button type="button" class="btn btn-default" id="numCount1">1</button>
+		  		  <button type="button" class="btn btn-default" id="numCount2">2</button>
+		  		  <button type="button" class="btn btn-default" id="numCount3">3</button>
+		  		  <button type="button" class="btn btn-default" id="numCount4">4</button>
+		  		  <button type="button" class="btn btn-default" id="numCount5">5</button>
+		  		  <button type="button" class="btn btn-default" id="numCount6">6</button>
+		  		  <button type="button" class="btn btn-default" id="numCount7">7</button>
+		  		  <button type="button" class="btn btn-default" id="numCount8">8</button>
+		    	</div>
+		    </div>
+
+		    <hr></hr>
+
+	      <div class="container_s">
+		      <h3>领队信息</h3>
+		      <br>
+		      <div class="input-group input-group-sl">
+		        <span class="input-group-addon" id="sizing-addon1">姓名</span>
+		        <input type="text" class="form-control" placeholder="Name" aria-describedby="sizing-addon1" name="leader_name" id="leaderName">
+		      </div>
+		      <br>
+		      <div class="input-group input-group-sl">
+		        <span class="input-group-addon" id="sizing-addon1">ID号</span>
+		        <input type="text" class="form-control" placeholder="IDNumber" aria-describedby="sizing-addon1" name="leader_id" id="leaderID">
+		      </div>
+		      <br>
+		      <div class="input-group input-group-sl">
+		        <span class="input-group-addon" id="sizing-addon1">电话</span>
+		        <input type="text" class="form-control" placeholder="Telephone" aria-describedby="sizing-addon1" name="leader_telephone" id="leaderTel">
+		      </div>
+	      </div>
+
+	      <hr></hr>
+
+	      <div class="container_s">
+	      	<h3 >队医信息</h3>
+		      <br>
+		      <div class="input-group input-group-sl">
+		        <span class="input-group-addon" id="sizing-addon1">姓名</span>
+		        <input type="text" class="form-control" placeholder="Name" aria-describedby="sizing-addon1" name="doctor_name" id="doctorName">
+		      </div>
+		      <br>
+		      <div class="input-group input-group-sl">
+		        <span class="input-group-addon" id="sizing-addon1">ID号</span>
+		        <input type="text" class="form-control" placeholder="IDNumber" aria-describedby="sizing-addon1" name="doctor_id" id="doctorID">
+		      </div>
+		      <br>
+		      <div class="input-group input-group-sl">
+		        <span class="input-group-addon" id="sizing-addon1">电话</span>
+		        <input type="text" class="form-control" placeholder="Telephone" aria-describedby="sizing-addon1" name="doctor_telephone" id="doctorTel">
+		      </div>
+	      </div>
+
+	      <hr></hr>
+
+	      <div class="container_s">
+	      	<h3 >教练信息</h3>
+		      <br>
+		      <div class="input-group input-group-sl">
+		        <span class="input-group-addon" id="sizing-addon1">姓名</span>
+		        <input type="text" class="form-control" placeholder="Name" aria-describedby="sizing-addon1" name="coach_name" id="coachName">
+		      </div>
+		      <br>
+		      <div class="input-group input-group-sl">
+		        <span class="input-group-addon" id="sizing-addon1">ID号</span>
+		        <input type="text" class="form-control" placeholder="IDNumber" aria-describedby="sizing-addon1" name="coach_id" id="coachID">
+		      </div>
+		      <br>
+		      <div class="input-group input-group-sl">
+		        <span class="input-group-addon" id="sizing-addon1">电话</span>
+		        <input type="text" class="form-control" placeholder="Telephone" aria-describedby="sizing-addon1" name="coach_telephone" id="coachTel">
+		      </div>
+	      </div>
+
+	      <hr></hr>
+
+	      <div class="container_s">
+	      	<h3 >裁判信息</h3>
+		      <br>
+		      <div class="input-group input-group-sl">
+		        <span class="input-group-addon" id="sizing-addon1">姓名</span>
+		        <input type="text" class="form-control" placeholder="Name" aria-describedby="sizing-addon1" name="referee_name" id="refName">
+		      </div>
+		      <br>
+		      <div class="input-group input-group-sl">
+		        <span class="input-group-addon" id="sizing-addon1">ID号</span>
+		        <input type="text" class="form-control" placeholder="IDNumber" aria-describedby="sizing-addon1" name="referee_id" id="refID">
+		      </div>
+		      <br>
+		      <div class="input-group input-group-sl">
+		        <span class="input-group-addon" id="sizing-addon1">电话</span>
+		        <input type="text" class="form-control" placeholder="Telephone" aria-describedby="sizing-addon1" name="referee_telephone" id="refTel">
+		      </div>
+		      <br>
+		      <div class="input-group input-group-sl">
+		        <span class="input-group-addon" id="sizing-addon1">密码</span>
+		        <input type="text" class="form-control" placeholder="Password" aria-describedby="sizing-addon1" name="referee_password" id="refTel">
+		      </div>
+	      </div>
+
+	      <hr></hr>
+
+				<div class="container_s">
+		      <div id="teamMumber1" style="display: none;">
+			      <h3>队员1信息</h3>
+			      <br>
+			      <div class="input-group input-group-sl">
+			        <span class="input-group-addon" id="sizing-addon1">姓名</span>
+			        <input type="text" class="form-control" placeholder="Name" aria-describedby="sizing-addon1" name="athletes_name1" id="mem1Name">
+			      </div>
+			      <br>
+			      <div class="input-group input-group-sl">
+			        <span class="input-group-addon" id="sizing-addon1">ID号</span>
+			        <input type="text" class="form-control" placeholder="IDNumber" aria-describedby="sizing-addon1" name="athletes_id1" id="mem1ID">
+			      </div>
+		      	<br>
+			      <div class="input-group input-group-sl">
+			        <span class="input-group-addon" id="sizing-addon1">年龄</span>
+			        <input type="text" class="form-control" placeholder="Age" aria-describedby="sizing-addon1" name="athletes_age1" id="mem1Age">
+			      </div>
+			      <br>
+							
+					  <div class="dropup">
+							<button class="btn btn-default dropdown-toggle" type="button" id="mem1Sex" data-toggle="dropdown" aria-haspopup="true"-expanded="false">
+						  性别
+						  <span class="caret"></span>
+							</button>
+							<ul class="dropdown-menu" aria-labelledby="dropdownMenu2">
+						  	<li id="mem1boy"><a>&nbsp;&nbsp;&nbsp;&nbsp;男生</a></li>
+						  	<li id="mem1girl"><a>&nbsp;&nbsp;&nbsp;&nbsp;女生</a></li>
+							</ul>
+							&nbsp;&nbsp;
+							<div class="btn-group" role="group" aria-label="..." >
+								<div id="mem1BoyGames" style="display: none">
+				  				<button data-toggle="button" aria-pressed="false" autocomplete="off" class="btn btn-default" id="mem1BoyDG">单杠</button>
+					  			<button data-toggle="button" aria-pressed="false" autocomplete="off" class="btn btn-default" id="mem1BoySG">双杠</button>
+					  			<button data-toggle="button" aria-pressed="false" autocomplete="off" class="btn btn-default" id="mem1BoyDH">吊环</button>
+					  			<button data-toggle="button" aria-pressed="false" autocomplete="off" class="btn btn-default" id="mem1BoyTM">跳马</button>
+					  			<button data-toggle="button" aria-pressed="false" autocomplete="off" class="btn btn-default" id="mem1BoyAM">鞍马</button>
+					  			<button data-toggle="button" aria-pressed="false" autocomplete="off" class="btn btn-default" id="mem1BoyBC">蹦床</button>
+					  			<button data-toggle="button" aria-pressed="false" autocomplete="off" class="btn btn-default" id="mem1BoyZYTC">自由体操</button>
+					  		</div>
+				
+
+					  		<div id="mem1GirlGames" style="display: none">
+				  				<button data-toggle="button" aria-pressed="false" class="btn btn-default" id="mem1GirlTM">跳马</button>
+				  				<button data-toggle="button" aria-pressed="false" class="btn btn-default" id="mem1GirlGDG">高低杠</button>
+					  			<button data-toggle="button" aria-pressed="false" class="btn btn-default" id="mem1GirlPHM">平衡木</button>
+					  			<button data-toggle="button" aria-pressed="false" class="btn btn-default" id="mem1GirlZYTC">自由体操</button>
+					  			<button data-toggle="button" aria-pressed="false" class="btn btn-default" id="mem1GirlBC">蹦床</button>
+					  		</div>
+					  	</div>
+					  </div>
+					</div>
+				</div>
+		      
+		    <div class="container_s">
+		      <div id="teamMumber2" style="display: none">
+		      	<h3>队员2信息</h3>
+			      <br>
+			      <div class="input-group input-group-sl">
+			        <span class="input-group-addon" id="sizing-addon1">姓名</span>
+			        <input type="text" class="form-control" placeholder="Name" aria-describedby="sizing-addon1" name="athletes_name2" id="mem2Name">
+			      </div>
+			      <br>
+			      <div class="input-group input-group-sl">
+			        <span class="input-group-addon" id="sizing-addon1">ID号</span>
+			        <input type="text" class="form-control" placeholder="IDNumber" aria-describedby="sizing-addon1" name="athletes_id2" id="mem2ID">
+			      </div>
+		      	<br>
+			      <div class="input-group input-group-sl">
+			        <span class="input-group-addon" id="sizing-addon1">年龄</span>
+			        <input type="text" class="form-control" placeholder="Age" aria-describedby="sizing-addon1" name="athletes_age2"  id="mem2Age">
+			      </div>
+			      <br>
+
+					  <div class="dropup">
+							<button class="btn btn-default dropdown-toggle" type="button" id="mem2Sex" data-toggle="dropdown" aria-haspopup="true	"-expanded="false">
+						  性别
+						  <span class="caret"></span>
+							</button>
+							<ul class="dropdown-menu" aria-labelledby="dropdownMenu2">
+						  	<li id="mem2boy"><a>&nbsp;&nbsp;&nbsp;&nbsp;男生</a></li>
+						  	<li id="mem2girl"><a>&nbsp;&nbsp;&nbsp;&nbsp;女生</a></li>
+							</ul>
+
+							&nbsp;&nbsp;
+							<div class="btn-group" role="group" aria-label="..." >
+								<div id="mem2BoyGames" style="display: none">
+				  				<button data-toggle="button" aria-pressed="false" autocomplete="off" class="btn btn-default" id="mem2BoyDG">单杠</button>
+					  			<button data-toggle="button" aria-pressed="false" autocomplete="off" class="btn btn-default" id="mem2BoySG">双杠</button>
+					  			<button data-toggle="button" aria-pressed="false" autocomplete="off" class="btn btn-default" id="mem2BoyDH">吊环</button>
+					  			<button data-toggle="button" aria-pressed="false" autocomplete="off" class="btn btn-default" id="mem2BoyTM">跳马</button>
+					  			<button data-toggle="button" aria-pressed="false" autocomplete="off" class="btn btn-default" id="mem2BoyAM">鞍马</button>
+					  			<button data-toggle="button" aria-pressed="false" autocomplete="off" class="btn btn-default" id="mem2BoyBC">蹦床</button>
+					  			<button data-toggle="button" aria-pressed="false" autocomplete="off" class="btn btn-default" id="mem2BoyZYTC">自由体操</button>
+					  		</div>
+				  		
+
+					  		<div id="mem2GirlGames" style="display: none">
+				  				<button data-toggle="button" aria-pressed="false" class="btn btn-default" id="mem2GirlTM">跳马</button>
+				  				<button data-toggle="button" aria-pressed="false" class="btn btn-default" id="mem2GirlGDG">高低杠</button>
+					  			<button data-toggle="button" aria-pressed="false" class="btn btn-default" id="mem2GirlPHM">平衡木</button>
+					  			<button data-toggle="button" aria-pressed="false" class="btn btn-default" id="mem2GirlZYTC">自由体操</button>
+					  			<button data-toggle="button" aria-pressed="false" class="btn btn-default" id="mem2GirlBC">蹦床</button>
+					  		</div>
+					  	</div>
+					  </div>
+
+					</div>
+				</div>
+			    
+			  <div class="container_s">
+		      <div id="teamMumber3" style="display: none">
+		      	<h3>队员3信息</h3>
+			      <br>
+			      <div class="input-group input-group-sl">
+			        <span class="input-group-addon" id="sizing-addon1">姓名</span>
+			        <input type="text" class="form-control" placeholder="Name" aria-describedby="sizing-addon1" id="mem3Name">
+			      </div>
+			      <br>
+			      <div class="input-group input-group-sl">
+			        <span class="input-group-addon" id="sizing-addon1">ID号</span>
+			        <input type="text" class="form-control" placeholder="IDNumber" aria-describedby="sizing-addon1" id="mem3ID">
+			      </div>
+		      	<br>
+			      <div class="input-group input-group-sl">
+			        <span class="input-group-addon" id="sizing-addon1">年龄</span>
+			        <input type="text" class="form-control" placeholder="Age" aria-describedby="sizing-addon1" id="mem3Age">
+			      </div>
+			      <br>
+
+					  <div class="dropup">
+							<button class="btn btn-default dropdown-toggle" type="button" id="mem3Sex" data-toggle="dropdown" aria-haspopup="true	"-expanded="false">
+						  性别
+						  <span class="caret"></span>
+							</button>
+							<ul class="dropdown-menu" aria-labelledby="dropdownMenu2">
+						  	<li id="mem3boy"><a>&nbsp;&nbsp;&nbsp;&nbsp;男生</a></li>
+						  	<li id="mem3girl"><a>&nbsp;&nbsp;&nbsp;&nbsp;女生</a></li>
+							</ul>
+
+							&nbsp;&nbsp;
+							<div class="btn-group" role="group" aria-label="..." >
+								<div id="mem3BoyGames" style="display: none">
+				  				<button data-toggle="button" aria-pressed="false" autocomplete="off" class="btn btn-default" id="mem3BoyDG">单杠</button>
+					  			<button data-toggle="button" aria-pressed="false" autocomplete="off" class="btn btn-default" id="mem3BoySG">双杠</button>
+					  			<button data-toggle="button" aria-pressed="false" autocomplete="off" class="btn btn-default" id="mem3BoyDH">吊环</button>
+					  			<button data-toggle="button" aria-pressed="false" autocomplete="off" class="btn btn-default" id="mem3BoyTM">跳马</button>
+					  			<button data-toggle="button" aria-pressed="false" autocomplete="off" class="btn btn-default" id="mem3BoyAM">鞍马</button>
+					  			<button data-toggle="button" aria-pressed="false" autocomplete="off" class="btn btn-default" id="mem3BoyBC">蹦床</button>
+					  			<button data-toggle="button" aria-pressed="false" autocomplete="off" class="btn btn-default" id="mem3BoyZYTC">自由体操</button>
+					  		</div>
+				  		
+
+				  			<div id="mem3GirlGames" style="display: none">
+				  				<button data-toggle="button" aria-pressed="false" class="btn btn-default" id="mem3GirlTM">跳马</button>
+				  				<button data-toggle="button" aria-pressed="false" class="btn btn-default" id="mem3GirlGDG">高低杠</button>
+					  			<button data-toggle="button" aria-pressed="false" class="btn btn-default" id="mem3GirlPHM">平衡木</button>
+					  			<button data-toggle="button" aria-pressed="false" class="btn btn-default" id="mem3GirlZYTC">自由体操</button>
+					  			<button data-toggle="button" aria-pressed="false" class="btn btn-default" id="mem3GirlBC">蹦床</button>
+				  			</div>
+							</div>
+					  </div>
+
+					</div>
+				</div>
+			    
+			  <div class="container_s">
+		      <div id="teamMumber4" style="display: none">
+		      	<h3>队员4信息</h3>
+			      <br>
+			      <div class="input-group input-group-sl">
+			        <span class="input-group-addon" id="sizing-addon1">姓名</span>
+			        <input type="text" class="form-control" placeholder="Name" aria-describedby="sizing-addon1" id="mem4Name">
+			      </div>
+			      <br>
+			      <div class="input-group input-group-sl">
+			        <span class="input-group-addon" id="sizing-addon1">ID号</span>
+			        <input type="text" class="form-control" placeholder="IDNumber" aria-describedby="sizing-addon1" id="mem4ID">
+			      </div>
+		      	<br>
+			      <div class="input-group input-group-sl">
+			        <span class="input-group-addon" id="sizing-addon1">年龄</span>
+			        <input type="text" class="form-control" placeholder="Age" aria-describedby="sizing-addon1" id="mem4Age">
+			      </div>
+			      <br>
+
+					  <div class="dropup">
+							<button class="btn btn-default dropdown-toggle" type="button" id="mem4Sex" data-toggle="dropdown" aria-haspopup="true	"-expanded="false">
+						  性别
+						  <span class="caret"></span>
+							</button>
+							<ul class="dropdown-menu" aria-labelledby="dropdownMenu2">
+						  	<li id="mem4boy"><a>&nbsp;&nbsp;&nbsp;&nbsp;男生</a></li>
+						  	<li id="mem4girl"><a>&nbsp;&nbsp;&nbsp;&nbsp;女生</a></li>
+							</ul>
+
+							&nbsp;&nbsp;
+							<div class="btn-group" role="group" aria-label="..." >
+								<div id="mem4BoyGames" style="display: none">
+				  				<button data-toggle="button" aria-pressed="false" autocomplete="off" class="btn btn-default" id="mem4BoyDG">单杠</button>
+					  			<button data-toggle="button" aria-pressed="false" autocomplete="off" class="btn btn-default" id="mem4BoySG">双杠</button>
+					  			<button data-toggle="button" aria-pressed="false" autocomplete="off" class="btn btn-default" id="mem4BoyDH">吊环</button>
+					  			<button data-toggle="button" aria-pressed="false" autocomplete="off" class="btn btn-default" id="mem4BoyTM">跳马</button>
+					  			<button data-toggle="button" aria-pressed="false" autocomplete="off" class="btn btn-default" id="mem4BoyAM">鞍马</button>
+					  			<button data-toggle="button" aria-pressed="false" autocomplete="off" class="btn btn-default" id="mem4BoyBC">蹦床</button>
+					  			<button data-toggle="button" aria-pressed="false" autocomplete="off" class="btn btn-default" id="mem4BoyZYTC">自由体操</button>
+					  		</div>
+				  		
+
+				  			<div id="mem4GirlGames" style="display: none">
+				  				<button data-toggle="button" aria-pressed="false" class="btn btn-default" id="mem4GirlTM">跳马</button>
+				  				<button data-toggle="button" aria-pressed="false" class="btn btn-default" id="mem4GirlGDG">高低杠</button>
+					  			<button data-toggle="button" aria-pressed="false" class="btn btn-default" id="mem4GirlPHM">平衡木</button>
+					  			<button data-toggle="button" aria-pressed="false" class="btn btn-default" id="mem4GirlZYTC">自由体操</button>
+					  			<button data-toggle="button" aria-pressed="false" class="btn btn-default" id="mem4GirlBC">蹦床</button>
+				  			</div>
+				  		</div>
+					  </div>
+
+					</div>
+			  </div>
+
+			  <div class="container_s">
+		      <div id="teamMumber5" style="display: none">
+		      	<h3>队员5信息</h3>
+			      <br>
+			      <div class="input-group input-group-sl">
+			        <span class="input-group-addon" id="sizing-addon1">姓名</span>
+			        <input type="text" class="form-control" placeholder="Name" aria-describedby="sizing-addon1" id="mem5Name">
+			      </div>
+			      <br>
+			      <div class="input-group input-group-sl">
+			        <span class="input-group-addon" id="sizing-addon1">ID号</span>
+			        <input type="text" class="form-control" placeholder="IDNumber" aria-describedby="sizing-addon1" id="mem5ID">
+			      </div>
+		      	<br>
+			      <div class="input-group input-group-sl">
+			        <span class="input-group-addon" id="sizing-addon1">年龄</span>
+			        <input type="text" class="form-control" placeholder="Age" aria-describedby="sizing-addon1" id="mem5Age">
+			      </div>
+			      <br>
+
+					  <div class="dropup">
+							<button class="btn btn-default dropdown-toggle" type="button" id="mem5Sex" data-toggle="dropdown" aria-haspopup="true	"-expanded="false">
+						  性别
+						  <span class="caret"></span>
+							</button>
+							<ul class="dropdown-menu" aria-labelledby="dropdownMenu2">
+						  	<li id="mem5boy"><a>&nbsp;&nbsp;&nbsp;&nbsp;男生</a></li>
+						  	<li id="mem5girl"><a>&nbsp;&nbsp;&nbsp;&nbsp;女生</a></li>
+							</ul>
+
+							&nbsp;&nbsp;
+							<div class="btn-group" role="group" aria-label="..." >
+									<div id="mem5BoyGames" style="display: none">
+				  				<button data-toggle="button" aria-pressed="false" autocomplete="off" class="btn btn-default" id="mem5BoyDG">单杠</button>
+					  			<button data-toggle="button" aria-pressed="false" autocomplete="off" class="btn btn-default" id="mem5BoySG">双杠</button>
+					  			<button data-toggle="button" aria-pressed="false" autocomplete="off" class="btn btn-default" id="mem5BoyDH">吊环</button>
+					  			<button data-toggle="button" aria-pressed="false" autocomplete="off" class="btn btn-default" id="mem5BoyTM">跳马</button>
+					  			<button data-toggle="button" aria-pressed="false" autocomplete="off" class="btn btn-default" id="mem5BoyAM">鞍马</button>
+					  			<button data-toggle="button" aria-pressed="false" autocomplete="off" class="btn btn-default" id="mem5BoyBC">蹦床</button>
+					  			<button data-toggle="button" aria-pressed="false" autocomplete="off" class="btn btn-default" id="mem5BoyZYTC">自由体操</button>
+					  		</div>
+				  		
+
+				  		<div id="mem5GirlGames" style="display: none">
+			  				<button data-toggle="button" aria-pressed="false" class="btn btn-default" id="mem5GirlTM">跳马</button>
+			  				<button data-toggle="button" aria-pressed="false" class="btn btn-default" id="mem5GirlGDG">高低杠</button>
+				  			<button data-toggle="button" aria-pressed="false" class="btn btn-default" id="mem5GirlPHM">平衡木</button>
+				  			<button data-toggle="button" aria-pressed="false" class="btn btn-default" id="mem5GirlZYTC">自由体操</button>
+				  			<button data-toggle="button" aria-pressed="false" class="btn btn-default" id="mem5GirlBC">蹦床</button>
+				  		</div>
+				  		</div>
+					  </div>
+
+					</div>
+				</div>
+			    
+			  <div class="container_s">
+		      <div id="teamMumber6" style="display: none">
+		      	<h3>队员6信息</h3>
+			      <br>
+			      <div class="input-group input-group-sl">
+			        <span class="input-group-addon" id="sizing-addon1">姓名</span>
+			        <input type="text" class="form-control" placeholder="Name" aria-describedby="sizing-addon1" id="mem6Name">
+			      </div>
+			      <br>
+			      <div class="input-group input-group-sl">
+			        <span class="input-group-addon" id="sizing-addon1">ID号</span>
+			        <input type="text" class="form-control" placeholder="IDNumber" aria-describedby="sizing-addon1" id="mem6ID">
+			      </div>
+		      	<br>
+			      <div class="input-group input-group-sl">
+			        <span class="input-group-addon" id="sizing-addon1">年龄</span>
+			        <input type="text" class="form-control" placeholder="Age" aria-describedby="sizing-addon1" id="mem6Age">
+			      </div>
+			      <br>
+
+					  <div class="dropup">
+							<button class="btn btn-default dropdown-toggle" type="button" id="mem6Sex" data-toggle="dropdown" aria-haspopup="true	"-expanded="false">
+						  性别
+						  <span class="caret"></span>
+							</button>
+							<ul class="dropdown-menu" aria-labelledby="dropdownMenu2">
+						  	<li id="mem6boy"><a>&nbsp;&nbsp;&nbsp;&nbsp;男生</a></li>
+						  	<li id="mem6girl"><a>&nbsp;&nbsp;&nbsp;&nbsp;女生</a></li>
+							</ul>
+
+							&nbsp;&nbsp;
+							<div class="btn-group" role="group" aria-label="..." >
+								<div id="mem6BoyGames" style="display: none">
+				  				<button data-toggle="button" aria-pressed="false" autocomplete="off" class="btn btn-default" id="mem6BoyDG">单杠</button>
+					  			<button data-toggle="button" aria-pressed="false" autocomplete="off" class="btn btn-default" id="mem6BoySG">双杠</button>
+					  			<button data-toggle="button" aria-pressed="false" autocomplete="off" class="btn btn-default" id="mem6BoyDH">吊环</button>
+					  			<button data-toggle="button" aria-pressed="false" autocomplete="off" class="btn btn-default" id="mem6BoyTM">跳马</button>
+					  			<button data-toggle="button" aria-pressed="false" autocomplete="off" class="btn btn-default" id="mem6BoyAM">鞍马</button>
+					  			<button data-toggle="button" aria-pressed="false" autocomplete="off" class="btn btn-default" id="mem6BoyBC">蹦床</button>
+					  			<button data-toggle="button" aria-pressed="false" autocomplete="off" class="btn btn-default" id="mem6BoyZYTC">自由体操</button>
+					  		
+				  		</div>
+
+				  		<div id="mem6GirlGames" style="display: none">
+			  				<button data-toggle="button" aria-pressed="false" class="btn btn-default" id="mem6GirlTM">跳马</button>
+			  				<button data-toggle="button" aria-pressed="false" class="btn btn-default" id="mem6GirlGDG">高低杠</button>
+				  			<button data-toggle="button" aria-pressed="false" class="btn btn-default" id="mem6GirlPHM">平衡木</button>
+				  			<button data-toggle="button" aria-pressed="false" class="btn btn-default" id="mem6GirlZYTC">自由体操</button>
+				  			<button data-toggle="button" aria-pressed="false" class="btn btn-default" id="mem6GirlBC">蹦床</button>
+				  		</div>
+							</div>
+					  </div>
+
+					</div>
+			  </div>
+
+			  <div class="container_s">
+		      <div id="teamMumber7" style="display: none">
+		      	<h3>队员7信息</h3>
+			      <br>
+			      <div class="input-group input-group-sl">
+			        <span class="input-group-addon" id="sizing-addon1">姓名</span>
+			        <input type="text" class="form-control" placeholder="Name" aria-describedby="sizing-addon1" id="mem7Name">
+			      </div>
+			      <br>
+			      <div class="input-group input-group-sl">
+			        <span class="input-group-addon" id="sizing-addon1">ID号</span>
+			        <input type="text" class="form-control" placeholder="IDNumber" aria-describedby="sizing-addon1" id="mem7ID">
+			      </div>
+		      	<br>
+			      <div class="input-group input-group-sl">
+			        <span class="input-group-addon" id="sizing-addon1">年龄</span>
+			        <input type="text" class="form-control" placeholder="Age" aria-describedby="sizing-addon1" id="mem7Age">
+			      </div>
+			      <br>
+
+					  <div class="dropup">
+							<button class="btn btn-default dropdown-toggle" type="button" id="mem7Sex" data-toggle="dropdown" aria-haspopup="true	"-expanded="false">
+						  性别
+						  <span class="caret"></span>
+							</button>
+							<ul class="dropdown-menu" aria-labelledby="dropdownMenu2">
+						  	<li id="mem7boy"><a>&nbsp;&nbsp;&nbsp;&nbsp;男生</a></li>
+						  	<li id="mem7girl"><a>&nbsp;&nbsp;&nbsp;&nbsp;女生</a></li>
+							</ul>
+
+							&nbsp;&nbsp;
+							<div class="btn-group" role="group" aria-label="..." >
+								<div id="mem7BoyGames" style="display: none">
+				  				<button data-toggle="button" aria-pressed="false" autocomplete="off" class="btn btn-default" id="mem7BoyDG">单杠</button>
+					  			<button data-toggle="button" aria-pressed="false" autocomplete="off" class="btn btn-default" id="mem7BoySG">双杠</button>
+					  			<button data-toggle="button" aria-pressed="false" autocomplete="off" class="btn btn-default" id="mem7BoyDH">吊环</button>
+					  			<button data-toggle="button" aria-pressed="false" autocomplete="off" class="btn btn-default" id="mem7BoyTM">跳马</button>
+					  			<button data-toggle="button" aria-pressed="false" autocomplete="off" class="btn btn-default" id="mem7BoyAM">鞍马</button>
+					  			<button data-toggle="button" aria-pressed="false" autocomplete="off" class="btn btn-default" id="mem7BoyBC">蹦床</button>
+					  			<button data-toggle="button" aria-pressed="false" autocomplete="off" class="btn btn-default" id="mem7BoyZYTC">自由体操</button>
+					  		
+				  		</div>
+
+				  		<div id="mem7GirlGames" style="display: none">
+			  				<button data-toggle="button" aria-pressed="false" class="btn btn-default" id="mem7GirlTM">跳马</button>
+			  				<button data-toggle="button" aria-pressed="false" class="btn btn-default" id="mem7GirlGDG">高低杠</button>
+				  			<button data-toggle="button" aria-pressed="false" class="btn btn-default" id="mem7GirlPHM">平衡木</button>
+				  			<button data-toggle="button" aria-pressed="false" class="btn btn-default" id="mem7GirlZYTC">自由体操</button>
+				  			<button data-toggle="button" aria-pressed="false" class="btn btn-default" id="mem7GirlBC">蹦床</button>
+				  		</div>
+				  		</div>
+					  </div>
+
+					</div>
+			  </div>
+
+			  <div class="container_s">
+		      <div id="teamMumber8" style="display: none">
+		      	<h3>队员8信息</h3>
+			      <br>
+			      <div class="input-group input-group-sl">
+			        <span class="input-group-addon" id="sizing-addon1">姓名</span>
+			        <input type="text" class="form-control" placeholder="Name" aria-describedby="sizing-addon1" id="mem8Name">
+			      </div>
+			      <br>
+			      <div class="input-group input-group-sl">
+			        <span class="input-group-addon" id="sizing-addon1">ID号</span>
+			        <input type="text" class="form-control" placeholder="IDNumber" aria-describedby="sizing-addon1" id="mem8ID">
+			      </div>
+		      	<br>
+			      <div class="input-group input-group-sl">
+			        <span class="input-group-addon" id="sizing-addon1">年龄</span>
+			        <input type="text" class="form-control" placeholder="Age" aria-describedby="sizing-addon1" id="mem8Age">
+			      </div>
+			      <br>
+
+					  <div class="dropup">
+							<button class="btn btn-default dropdown-toggle" type="button" id="mem8Sex" data-toggle="dropdown" aria-haspopup="true	"-expanded="false">
+						  性别
+						  <span class="caret"></span>
+							</button>
+							<ul class="dropdown-menu" aria-labelledby="dropdownMenu2">
+						  	<li id="mem8boy"><a>&nbsp;&nbsp;&nbsp;&nbsp;男生</a></li>
+						  	<li id="mem8girl"><a>&nbsp;&nbsp;&nbsp;&nbsp;女生</a></li>
+							</ul>
+
+							&nbsp;&nbsp;
+							<div class="btn-group" role="group" aria-label="..." >
+								<div id="mem8BoyGames" style="display: none">
+				  				<button data-toggle="button" aria-pressed="false" autocomplete="off" class="btn btn-default" id="mem8BoyDG">单杠</button>
+					  			<button data-toggle="button" aria-pressed="false" autocomplete="off" class="btn btn-default" id="mem8BoySG">双杠</button>
+					  			<button data-toggle="button" aria-pressed="false" autocomplete="off" class="btn btn-default" id="mem8BoyDH">吊环</button>
+					  			<button data-toggle="button" aria-pressed="false" autocomplete="off" class="btn btn-default" id="mem8BoyTM">跳马</button>
+					  			<button data-toggle="button" aria-pressed="false" autocomplete="off" class="btn btn-default" id="mem8BoyAM">鞍马</button>
+					  			<button data-toggle="button" aria-pressed="false" autocomplete="off" class="btn btn-default" id="mem8BoyBC">蹦床</button>
+					  			<button data-toggle="button" aria-pressed="false" autocomplete="off" class="btn btn-default" id="mem8BoyZYTC">自由体操</button>
+					  		</div>
+				  		
+
+				  		<div id="mem8GirlGames" style="display: none">
+			  				<button data-toggle="button" aria-pressed="false" class="btn btn-default" id="mem8GirlTM">跳马</button>
+			  				<button data-toggle="button" aria-pressed="false" class="btn btn-default" id="mem8GirlGDG">高低杠</button>
+				  			<button data-toggle="button" aria-pressed="false" class="btn btn-default" id="mem8GirlPHM">平衡木</button>
+				  			<button data-toggle="button" aria-pressed="false" class="btn btn-default" id="mem8GirlZYTC">自由体操</button>
+				  			<button data-toggle="button" aria-pressed="false" class="btn btn-default" id="mem8GirlBC">蹦床</button>
+				  		</div>
+				  		</div>
+					  </div>
+
+					</div>
+		    </div>
+
+			<!--ath_sex-->
+		    <input type="text" name="athletes_sex1" id="athletes_sex1" value="1" style="display:none">
+		    <input type="text" name="athletes_sex2" id="athletes_sex2" value="1" style="display:none">
+		    <input type="text" name="athletes_sex3" id="athletes_sex3" value="1" style="display:none">
+		    <input type="text" name="athletes_sex4" id="athletes_sex4" value="1" style="display:none">
+		    <input type="text" name="athletes_sex5" id="athletes_sex5" value="1" style="display:none">
+		    <input type="text" name="athletes_sex6" id="athletes_sex6" value="1" style="display:none">
+		    <input type="text" name="athletes_sex7" id="athletes_sex7" value="1" style="display:none">
+		    <input type="text" name="athletes_sex8" id="athletes_sex8" value="1" style="display:none">
+		    <!--ath_sex-->
+
+		    <!--ath_event-->
+		    <input type="text" name="Boy1DG" id="Boy1DG" value="0" style="display:none">
+		    <input type="text" name="Boy1SG" id="Boy1SG" value="0" style="display:none">
+		    <input type="text" name="Boy1DH" id="Boy1DH" value="0" style="display:none">
+		    <input type="text" name="Boy1TM" id="Boy1TM" value="0" style="display:none">
+		    <input type="text" name="Boy1AM" id="Boy1AM" value="0" style="display:none">
+		    <input type="text" name="Boy1BC" id="Boy1BC" value="0" style="display:none">
+		    <input type="text" name="Boy1ZYTC" id="Boy1ZYTC" value="0" style="display:none">
+		    <input type="text" name="Girl1TM" id="Girl1TM" value="0" style="display:none">
+		    <input type="text" name="Girl1GDG" id="Girl1GDG" value="0" style="display:none">
+		    <input type="text" name="Girl1PHM" id="Girl1PHM" value="0" style="display:none">
+		    <input type="text" name="Girl1ZYTC" id="Girl1ZYTC" value="0" style="display:none">
+		    <input type="text" name="Girl1BC" id="Girl1BC" value="0" style="display:none">
+		    <input type="text" name="Boy2DG" id="Boy2DG" value="0" style="display:none">
+		    <input type="text" name="Boy2SG" id="Boy2SG" value="0" style="display:none">
+		    <input type="text" name="Boy2DH" id="Boy2DH" value="0" style="display:none">
+		    <input type="text" name="Boy2TM" id="Boy2TM" value="0" style="display:none">
+		    <input type="text" name="Boy2AM" id="Boy2AM" value="0" style="display:none">
+		    <input type="text" name="Boy2BC" id="Boy2BC" value="0" style="display:none">
+		    <input type="text" name="Boy2ZYTC" id="Boy2ZYTC" value="0" style="display:none">
+		    <input type="text" name="Girl2TM" id="Girl2TM" value="0" style="display:none">
+		    <input type="text" name="Girl2GDG" id="Girl2GDG" value="0" style="display:none">
+		    <input type="text" name="Girl2PHM" id="Girl2PHM" value="0" style="display:none">
+		    <input type="text" name="Girl2ZYTC" id="Girl2ZYTC" value="0" style="display:none">
+		    <input type="text" name="Girl2BC" id="Girl2BC" value="0" style="display:none">
+		    <!--ath_event-->
+				
+		    <div class="container_s" id="commit" style="display: none">
+		    	<hr>
+				  <div id="1commit" style="display: block; margin:0 auto;text-align: center;" >
+						<button type="submit" class="btn btn-default btn" name="notload" style="width:20%">提交</button>
+				  </div>
+				  <br>
+				</div>
+	    </div>
+    </form>
+    <!-- Container-->
+
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script>window.jQuery || document.write('<script src="/static/js/jquery.min.js"><\/script>')</script>
+    <script src="/static/js/bootstrap.min.js"></script>
+    <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+    <script src="/static/js/ie10-viewport-bug-workaround.js"></script>
+   </nav>
+  </body>
+  <script type="text/javascript">
+  	//运动1
+  	var mem1BoyDG=document.getElementById("mem1BoyDG");
+  	mem1BoyDG.onclick=function(){
+  		if(document.getElementById( 'Boy1DG' ).value == "0"){
+  			document.getElementById( 'Boy1DG' ).value ="1"
+  		}else{
+  			document.getElementById( 'Boy1DG' ).value ="0"
+  		}
+  	}
+
+  	var mem1BoySG=document.getElementById("mem1BoySG");
+  	mem1BoySG.onclick=function(){
+  		if(document.getElementById( 'Boy1SG' ).value == "0"){
+  			document.getElementById( 'Boy1SG' ).value ="1"
+  		}else{
+  			document.getElementById( 'Boy1SG' ).value ="0"
+  		}
+  	}
+
+  	var mem1BoyDH=document.getElementById("mem1BoyDH");
+  	mem1BoyDH.onclick=function(){
+  		if(document.getElementById( 'Boy1DH' ).value == "0"){
+  			document.getElementById( 'Boy1DH' ).value ="1"
+  		}else{
+  			document.getElementById( 'Boy1DH' ).value ="0"
+  		}
+  	}
+
+  	var mem1BoyTM=document.getElementById("mem1BoyTM");
+  	mem1BoyTM.onclick=function(){
+  		if(document.getElementById( 'Boy1TM' ).value == "0"){
+  			document.getElementById( 'Boy1TM' ).value ="1"
+  		}else{
+  			document.getElementById( 'Boy1TM' ).value ="0"
+  		}
+  	}
+
+  	var mem1BoyAM=document.getElementById("mem1BoyAM");
+  	mem1BoyAM.onclick=function(){
+  		if(document.getElementById( 'Boy1AM' ).value == "0"){
+  			document.getElementById( 'Boy1AM' ).value ="1"
+  		}else{
+  			document.getElementById( 'Boy1AM' ).value ="0"
+  		}
+  	}
+
+  	var mem1BoyBC=document.getElementById("mem1BoyBC");
+  	mem1BoyBC.onclick=function(){
+  		if(document.getElementById( 'Boy1BC' ).value == "0"){
+  			document.getElementById( 'Boy1BC' ).value ="1"
+  		}else{
+  			document.getElementById( 'Boy1BC' ).value ="0"
+  		}
+  	}
+
+  	var mem1BoyZYTC=document.getElementById("mem1BoyZYTC");
+  	mem1BoyZYTC.onclick=function(){
+  		if(document.getElementById( 'Boy1ZYTC' ).value == "0"){
+  			document.getElementById( 'Boy1ZYTC' ).value ="1"
+  		}else{
+  			document.getElementById( 'Boy1ZYTC' ).value ="0"
+  		}
+  	}
+
+  	var mem1GirlTM=document.getElementById("mem1GirlTM");
+  	mem1GirlTM.onclick=function(){
+  		if(document.getElementById( 'Girl1TM' ).value == "0"){
+  			document.getElementById( 'Girl1TM' ).value ="1"
+  		}else{
+  			document.getElementById( 'Girl1TM' ).value ="0"
+  		}
+  	}
+
+  	var mem1GirlGDG=document.getElementById("mem1GirlGDG");
+  	mem1GirlGDG.onclick=function(){
+  		if(document.getElementById( 'Girl1GDG' ).value == "0"){
+  			document.getElementById( 'Girl1GDG' ).value ="1"
+  		}else{
+  			document.getElementById( 'Girl1GDG' ).value ="0"
+  		}
+  	}
+
+  	var mem1GirlPHM=document.getElementById("mem1GirlPHM");
+  	mem1GirlPHM.onclick=function(){
+  		if(document.getElementById( 'Girl1PHM' ).value == "0"){
+  			document.getElementById( 'Girl1PHM' ).value ="1"
+  		}else{
+  			document.getElementById( 'Girl1PHM' ).value ="0"
+  		}
+  	}
+
+  	var mem1GirlZYTC=document.getElementById("mem1GirlZYTC");
+  	mem1GirlZYTC.onclick=function(){
+  		if(document.getElementById( 'Girl1ZYTC' ).value == "0"){
+  			document.getElementById( 'Girl1ZYTC' ).value ="1"
+  		}else{
+  			document.getElementById( 'Girl1ZYTC' ).value ="0"
+  		}
+  	}
+
+  	var mem1GirlBC=document.getElementById("mem1GirlBC");
+  	mem1GirlBC.onclick=function(){
+  		if(document.getElementById( 'Girl1BC' ).value == "0"){
+  			document.getElementById( 'Girl1BC' ).value ="1"
+  		}else{
+  			document.getElementById( 'Girl1BC' ).value ="0"
+  		}
+  	}
+  	//运动2
+  	var mem2BoyDG=document.getElementById("mem2BoyDG");
+  	mem2BoyDG.onclick=function(){
+  		if(document.getElementById( 'Boy2DG' ).value == "0"){
+  			document.getElementById( 'Boy2DG' ).value ="1"
+  		}else{
+  			document.getElementById( 'Boy2DG' ).value ="0"
+  		}
+  	}
+
+  	var mem2BoySG=document.getElementById("mem2BoySG");
+  	mem2BoySG.onclick=function(){
+  		if(document.getElementById( 'Boy2SG' ).value == "0"){
+  			document.getElementById( 'Boy2SG' ).value ="1"
+  		}else{
+  			document.getElementById( 'Boy2SG' ).value ="0"
+  		}
+  	}
+
+  	var mem2BoyDH=document.getElementById("mem2BoyDH");
+  	mem2BoyDH.onclick=function(){
+  		if(document.getElementById( 'Boy2DH' ).value == "0"){
+  			document.getElementById( 'Boy2DH' ).value ="1"
+  		}else{
+  			document.getElementById( 'Boy2DH' ).value ="0"
+  		}
+  	}
+
+  	var mem2BoyTM=document.getElementById("mem2BoyTM");
+  	mem2BoyTM.onclick=function(){
+  		if(document.getElementById( 'Boy2TM' ).value == "0"){
+  			document.getElementById( 'Boy2TM' ).value ="1"
+  		}else{
+  			document.getElementById( 'Boy2TM' ).value ="0"
+  		}
+  	}
+
+  	var mem2BoyAM=document.getElementById("mem2BoyAM");
+  	mem2BoyAM.onclick=function(){
+  		if(document.getElementById( 'Boy2AM' ).value == "0"){
+  			document.getElementById( 'Boy2AM' ).value ="1"
+  		}else{
+  			document.getElementById( 'Boy2AM' ).value ="0"
+  		}
+  	}
+
+  	var mem2BoyBC=document.getElementById("mem2BoyBC");
+  	mem2BoyBC.onclick=function(){
+  		if(document.getElementById( 'Boy2BC' ).value == "0"){
+  			document.getElementById( 'Boy2BC' ).value ="1"
+  		}else{
+  			document.getElementById( 'Boy2BC' ).value ="0"
+  		}
+  	}
+
+  	var mem2BoyZYTC=document.getElementById("mem2BoyZYTC");
+  	mem2BoyZYTC.onclick=function(){
+  		if(document.getElementById( 'Boy2ZYTC' ).value == "0"){
+  			document.getElementById( 'Boy2ZYTC' ).value ="1"
+  		}else{
+  			document.getElementById( 'Boy2ZYTC' ).value ="0"
+  		}
+  	}
+
+  	var mem2GirlTM=document.getElementById("mem2GirlTM");
+  	mem2GirlTM.onclick=function(){
+  		if(document.getElementById( 'Girl2TM' ).value == "0"){
+  			document.getElementById( 'Girl2TM' ).value ="1"
+  		}else{
+  			document.getElementById( 'Girl2TM' ).value ="0"
+  		}
+  	}
+
+  	var mem2GirlGDG=document.getElementById("mem2GirlGDG");
+  	mem2GirlGDG.onclick=function(){
+  		if(document.getElementById( 'Girl2GDG' ).value == "0"){
+  			document.getElementById( 'Girl2GDG' ).value ="1"
+  		}else{
+  			document.getElementById( 'Girl2GDG' ).value ="0"
+  		}
+  	}
+
+  	var mem2GirlPHM=document.getElementById("mem2GirlPHM");
+  	mem2GirlPHM.onclick=function(){
+  		if(document.getElementById( 'Girl2PHM' ).value == "0"){
+  			document.getElementById( 'Girl2PHM' ).value ="1"
+  		}else{
+  			document.getElementById( 'Girl2PHM' ).value ="0"
+  		}
+  	}
+
+  	var mem2GirlZYTC=document.getElementById("mem2GirlZYTC");
+  	mem2GirlZYTC.onclick=function(){
+  		if(document.getElementById( 'Girl2ZYTC' ).value == "0"){
+  			document.getElementById( 'Girl2ZYTC' ).value ="1"
+  		}else{
+  			document.getElementById( 'Girl2ZYTC' ).value ="0"
+  		}
+  	}
+
+  	var mem2GirlBC=document.getElementById("mem2GirlBC");
+  	mem2GirlBC.onclick=function(){
+  		if(document.getElementById( 'Girl2BC' ).value == "0"){
+  			document.getElementById( 'Girl2BC' ).value ="1"
+  		}else{
+  			document.getElementById( 'Girl2BC' ).value ="0"
+  		}
+  	}
+
+  	//
+  	var mem1BoyGames=document.getElementById("mem1BoyGames");
+  	var mem1GirlGames=document.getElementById("mem1GirlGames");
+  	var mem1Sex=document.getElementById("mem1Sex");
+
+  	var mem1boy=document.getElementById("mem1boy");
+  	mem1boy.onclick=function(){
+  		mem1BoyGames.style.display="block";
+  		mem1GirlGames.style.display="none";
+  		document.getElementById( 'athletes_sex1' ).value = 1
+  		mem1Sex.innerHTML='男生&nbsp;'+'<span class="caret"></span>';
+  	}
+
+  	var mem1girl=document.getElementById("mem1girl");
+  	mem1girl.onclick=function(){
+  		mem1BoyGames.style.display="none";
+  		mem1GirlGames.style.display="block";
+  		document.getElementById( 'athletes_sex1' ).value = 0
+  		mem1Sex.innerHTML='女生&nbsp;'+'<span class="caret"></span>';
+  	}
+
+
+
+
+  	var mem2BoyGames=document.getElementById("mem2BoyGames");
+  	var mem2GirlGames=document.getElementById("mem2GirlGames");
+  	var mem2Sex=document.getElementById("mem2Sex");
+
+  	var mem2boy=document.getElementById("mem2boy");
+  	mem2boy.onclick=function(){
+  		mem2BoyGames.style.display="block";
+  		mem2GirlGames.style.display="none";
+  		document.getElementById( 'athletes_sex2' ).value = 1
+  		mem2Sex.innerHTML='男生&nbsp;'+'<span class="caret"></span>';
+  	}
+
+  	var mem2girl=document.getElementById("mem2girl");
+  	mem2girl.onclick=function(){
+  		mem2BoyGames.style.display="none";
+  		mem2GirlGames.style.display="block";
+  		document.getElementById( 'athletes_sex2' ).value = 0
+  		mem2Sex.innerHTML='女生&nbsp;'+'<span class="caret"></span>';
+  	}
+
+
+
+
+  	var mem3BoyGames=document.getElementById("mem3BoyGames");
+  	var mem3GirlGames=document.getElementById("mem3GirlGames");
+  	var mem3Sex=document.getElementById("mem3Sex");
+
+  	var mem3boy=document.getElementById("mem3boy");
+  	mem3boy.onclick=function(){
+  		mem3BoyGames.style.display="block";
+  		mem3GirlGames.style.display="none";
+  		document.getElementById( 'athletes_sex3' ).value = 1
+  		mem3Sex.innerHTML='男生&nbsp;'+'<span class="caret"></span>';
+  	}
+
+  	var mem3girl=document.getElementById("mem3girl");
+  	mem3girl.onclick=function(){
+  		mem3BoyGames.style.display="none";
+  		mem3GirlGames.style.display="block";
+  		document.getElementById( 'athletes_sex3' ).value = 0
+  		mem3Sex.innerHTML='女生&nbsp;'+'<span class="caret"></span>';
+  	}
+
+
+
+  	var mem4BoyGames=document.getElementById("mem4BoyGames");
+  	var mem4GirlGames=document.getElementById("mem4GirlGames");
+  	var mem4Sex=document.getElementById("mem4Sex");
+
+  	var mem4boy=document.getElementById("mem4boy");
+  	mem4boy.onclick=function(){
+  		mem4BoyGames.style.display="block";
+  		mem4GirlGames.style.display="none";
+  		document.getElementById( 'athletes_sex4' ).value = 1
+  		mem4Sex.innerHTML='男生&nbsp;'+'<span class="caret"></span>';
+  	}
+
+  	var mem4girl=document.getElementById("mem4girl");
+  	mem4girl.onclick=function(){
+  		mem4BoyGames.style.display="none";
+  		mem4GirlGames.style.display="block";
+  		document.getElementById( 'athletes_sex4' ).value = 0
+  		mem4Sex.innerHTML='女生&nbsp;'+'<span class="caret"></span>';
+  	}
+
+
+
+  	var mem5BoyGames=document.getElementById("mem5BoyGames");
+  	var mem5GirlGames=document.getElementById("mem5GirlGames");
+  	var mem5Sex=document.getElementById("mem5Sex");
+
+  	var mem5boy=document.getElementById("mem5boy");
+  	mem5boy.onclick=function(){
+  		mem5BoyGames.style.display="block";
+  		mem5GirlGames.style.display="none";
+  		document.getElementById( 'athletes_sex5' ).value = 1
+  		mem5Sex.innerHTML='男生&nbsp;'+'<span class="caret"></span>';
+  	}
+
+  	var mem5girl=document.getElementById("mem5girl");
+  	mem5girl.onclick=function(){
+  		mem5BoyGames.style.display="none";
+  		mem5GirlGames.style.display="block";
+  		document.getElementById( 'athletes_sex5' ).value = 0
+  		mem5Sex.innerHTML='女生&nbsp;'+'<span class="caret"></span>';
+  	}
+
+
+
+  	var mem6BoyGames=document.getElementById("mem6BoyGames");
+  	var mem6GirlGames=document.getElementById("mem6GirlGames");
+  	var mem6Sex=document.getElementById("mem6Sex");
+
+  	var mem6boy=document.getElementById("mem6boy");
+  	mem6boy.onclick=function(){
+  		mem6BoyGames.style.display="block";
+  		mem6GirlGames.style.display="none";
+  		document.getElementById( 'athletes_sex6' ).value = 1
+  		mem6Sex.innerHTML='男生&nbsp;'+'<span class="caret"></span>';
+  	}
+
+  	var mem6girl=document.getElementById("mem6girl");
+  	mem6girl.onclick=function(){
+  		mem6BoyGames.style.display="none";
+  		mem6GirlGames.style.display="block";
+  		document.getElementById( 'athletes_sex6' ).value = 0
+  		mem6Sex.innerHTML='女生&nbsp;'+'<span class="caret"></span>';
+  	}
+
+
+
+  	var mem7BoyGames=document.getElementById("mem7BoyGames");
+  	var mem7GirlGames=document.getElementById("mem7GirlGames");
+  	var mem7Sex=document.getElementById("mem7Sex");
+
+  	var mem7boy=document.getElementById("mem7boy");
+  	mem7boy.onclick=function(){
+  		mem7BoyGames.style.display="block";
+  		mem7GirlGames.style.display="none";
+  		document.getElementById( 'athletes_sex7' ).value = 1
+  		mem7Sex.innerHTML='男生&nbsp;'+'<span class="caret"></span>';
+  	}
+
+  	var mem7girl=document.getElementById("mem7girl");
+  	mem7girl.onclick=function(){
+  		mem7BoyGames.style.display="none";
+  		mem7GirlGames.style.display="block";
+  		document.getElementById( 'athletes_sex7' ).value = 0
+  		mem7Sex.innerHTML='女生&nbsp;'+'<span class="caret"></span>';
+  	}
+
+
+
+  	var mem8BoyGames=document.getElementById("mem8BoyGames");
+  	var mem8GirlGames=document.getElementById("mem8GirlGames");
+  	var mem8Sex=document.getElementById("mem8Sex");
+
+  	var mem8boy=document.getElementById("mem8boy");
+  	mem8boy.onclick=function(){
+
+  		mem8BoyGames.style.display="block";
+  		mem8GirlGames.style.display="none";
+  		document.getElementById( 'athletes_sex8' ).value = 1
+  		mem8Sex.innerHTML='男生&nbsp;'+'<span class="caret"></span>';
+  	}
+
+  	var mem8girl=document.getElementById("mem8girl");
+  	mem8girl.onclick=function(){
+  		mem8BoyGames.style.display="none";
+  		mem8GirlGames.style.display="block";
+  		document.getElementById( 'athletes_sex8' ).value = 0
+  		mem8Sex.innerHTML='女生&nbsp;'+'<span class="caret"></span>';
+  	}
+
+
+  	
+
+  	var numCount1=document.getElementById("numCount1");
+  	var numCount2=document.getElementById("numCount2");
+		var numCount3=document.getElementById("numCount3");
+		var numCount4=document.getElementById("numCount4");
+		var numCount5=document.getElementById("numCount5");
+		var numCount6=document.getElementById("numCount6");
+  	var numCount7=document.getElementById("numCount7");
+		var numCount8=document.getElementById("numCount8");  	  	  	  	  	
+  	
+  	var teamMumber1=document.getElementById("teamMumber1");
+  	var teamMumber2=document.getElementById("teamMumber2");
+  	var teamMumber3=document.getElementById("teamMumber3");
+  	var teamMumber4=document.getElementById("teamMumber4");
+  	var teamMumber5=document.getElementById("teamMumber5");
+  	var teamMumber6=document.getElementById("teamMumber6");
+  	var teamMumber7=document.getElementById("teamMumber7");
+  	var teamMumber8=document.getElementById("teamMumber8");
+  	var commit=document.getElementById("commit");
+  	
+
+  	
+
+  	var clearAll = function(){
+  		teamMumber1.style.display="none";
+  		teamMumber2.style.display="none";
+  		teamMumber3.style.display="none";
+  		teamMumber4.style.display="none";
+  		teamMumber5.style.display="none";
+  		teamMumber6.style.display="none";
+  		teamMumber7.style.display="none";
+  		teamMumber8.style.display="none";
+  				
+  	};
+
+  	numCount1.onclick=function(){
+  		clearAll();
+  		teamMumber1.style.display="block";
+  		commit.style.display="block";
+  		
+  	}
+
+  	numCount2.onclick=function(){
+  		clearAll();
+  		teamMumber1.style.display="block";
+  		teamMumber2.style.display="block";
+  		commit.style.display="block";
+  	}
+
+  	numCount3.onclick=function(){
+  		clearAll();
+  		teamMumber1.style.display="block";
+  		teamMumber2.style.display="block";
+  		teamMumber3.style.display="block";
+  		commit.style.display="block";
+  	}
+
+  	numCount4.onclick=function(){
+  		clearAll();
+  		teamMumber1.style.display="block";
+  		teamMumber2.style.display="block";
+  		teamMumber3.style.display="block";
+  		teamMumber4.style.display="block";
+  		commit.style.display="block";
+  	}
+
+  	numCount5.onclick=function(){
+  		clearAll();
+  		teamMumber1.style.display="block";
+  		teamMumber2.style.display="block";
+  		teamMumber3.style.display="block";
+  		teamMumber4.style.display="block";
+  		teamMumber5.style.display="block";
+  		commit.style.display="block";
+  	}
+
+  	numCount6.onclick=function(){
+  		clearAll();
+  		teamMumber1.style.display="block";
+  		teamMumber2.style.display="block";
+  		teamMumber3.style.display="block";
+  		teamMumber4.style.display="block";
+  		teamMumber5.style.display="block";
+  		teamMumber6.style.display="block";
+  		commit.style.display="block";
+  	}
+
+  	numCount7.onclick=function(){
+  		clearAll();
+  		teamMumber1.style.display="block";
+  		teamMumber2.style.display="block";
+  		teamMumber3.style.display="block";
+  		teamMumber4.style.display="block";
+  		teamMumber5.style.display="block";
+  		teamMumber6.style.display="block";
+  		teamMumber7.style.display="block";
+  		commit.style.display="block";
+  	}
+
+  	numCount8.onclick=function(){
+  		clearAll();
+  		teamMumber1.style.display="block";
+  		teamMumber2.style.display="block";
+  		teamMumber3.style.display="block";
+  		teamMumber4.style.display="block";
+  		teamMumber5.style.display="block";
+  		teamMumber6.style.display="block";
+  		teamMumber7.style.display="block";
+  		teamMumber8.style.display="block";
+  		commit.style.display="block";
+  	}
+
+  	
+
+  </script>
+</html>
