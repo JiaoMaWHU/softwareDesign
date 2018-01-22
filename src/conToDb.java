@@ -9,9 +9,9 @@ public class conToDb {
     //====================================
     Connection con;
     String driver = "com.mysql.jdbc.Driver";
-    String mysql_url = "jdbc:mysql://120.77.35.18:3306/ComSysDesign";
-    String mysql_user = "root";
-    String mysql_password = "jiaoma";
+    String mysql_url = "jdbc:mysql://xxxxxxxxxx";
+    String mysql_user = "xxxx";
+    String mysql_password = "xxxxxxxx";
     Statement statement;
     ResultSet rs;
     String executeSql=null;
