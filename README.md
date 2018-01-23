@@ -1,6 +1,6 @@
 大型软件设计编程实验
 ================
-> 开发人员：[@JiaoMaWHU](https://github.com/JiaoMaWHU),[@DHILLLL](https://github.com/DHILLLL),WU,LIN,WANG,AN
+> 开发人员：[@JiaoMaWHU](https://github.com/JiaoMaWHU),[@DHILLLL](https://github.com/DHILLLL),[@AnFJ](https://github.com/AnFJ),WU,LIN,WANG
 
 1. 系统说明：设计一个体操比赛报名与实时打分系统，具体见docx文件。
 2. 系统架构：![架构](https://github.com/JiaoMaWHU/softwareDesign/blob/master/架构.png "架构")
